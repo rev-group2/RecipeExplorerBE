@@ -1,6 +1,7 @@
 const express = require("express");
-require('dotenv').config();
-const secretKey = process.env.JWT_SECRET;
+// require('dotenv').config();
+// const secretKey = process.env.JWT_SECRET;
+const { getSecrets } = require('../util/secrets.js');
 const jwt = require("jsonwebtoken");
 
 
@@ -20,7 +21,7 @@ async function authenticateToken(req, res, next){
 
 async function decodeJWT(token){
     try{
-        const user = await jwt.verify(token, secretKey)
+        const user = await jwt.verify(token, (await getSecrets()).JWT_SECRET)
         return user;
     }catch(err){
         console.error(err);

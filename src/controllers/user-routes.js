@@ -13,17 +13,21 @@ const { getUserByUsernamePassword,
     getUserByToken
 } = require('../service/user-service.js');
 const { getDatabaseItem } = require('../service/general-service.js');
-require('dotenv').config();
-const secretKey = process.env.JWT_SECRET;;
+// require('dotenv').config();
+// const secretKey = process.env.JWT_SECRET;
+const { getSecrets } = require('../util/secrets.js');
 
 router.post("/login", async (req, res) => {
     try {
         let token = null;
+        // try logging in user first
         const account = await getUserByUsernamePassword(req.body.username, req.body.password);
+
+        // get token
         token = jwt.sign({
             uuid: account.uuid,
             username: account.username
-        }, secretKey, {
+        }, (await getSecrets()).JWT_SECRET, {
             expiresIn: "7d"
         });
         res.status(200).json({ token });

@@ -7,8 +7,9 @@ const {
     UpdateCommand,
     DeleteCommand
 } = require('@aws-sdk/lib-dynamodb');
-require('dotenv').config();
-const AWS_REGION = process.env.AWS_REGION;
+// require('dotenv').config();
+// const AWS_REGION = process.env.AWS_REGION;
+const AWS_REGION = 'us-west-1';
 
 const { logger } = require('../util/logger');
 
