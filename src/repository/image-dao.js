@@ -1,9 +1,9 @@
-import {
+const {
   PutObjectCommand,
   GetObjectCommand,
   S3Client
-} from "@aws-sdk/client-s3";
-import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
+} = require("@aws-sdk/client-s3");
+const { getSignedUrl } = require("@aws-sdk/s3-request-presigner");
 const AWS_REGION = "us-west-1";
 const client = new S3Client({ region: AWS_REGION });
 const { logger } = require("../util/logger");
