@@ -4,7 +4,7 @@ const router = express.Router();
 const { imageUpload } = require("../service/image-service.js");
 const { authenticateToken } = require("../util/authentication.js");
 const { logger } = require("../util/logger.js");
-const upload = multer();
+const upload = multer({ limits: { fileSize: 50000000 } });
 
 router.post("/", upload.single("file"), authenticateToken, async (req, res) => {
   try {
@@ -13,7 +13,7 @@ router.post("/", upload.single("file"), authenticateToken, async (req, res) => {
     res.send(response);
   } catch (err) {
     logger.error(err.message);
-    console.error(err);
+    console.error(err.message);
   }
 });
 
