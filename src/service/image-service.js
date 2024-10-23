@@ -5,10 +5,10 @@ const {
 
 async function imageUpload(imageFile) {
   const bucket = "recipes-explorer";
-  const objectKey = `images/${Date.now()}_${imageFile.name}`;
-  const contentType = imageFile.type;
+  const objectKey = `images/${Date.now()}_${imageFile.originalname}`;
+  const contentType = imageFile.mimetype;
 
-  await uploadImageToBucket(bucket, objectKey, contentType, imageFile);
+  await uploadImageToBucket(bucket, objectKey, contentType, imageFile.buffer);
 
   const presignedUrl = await getPreSignedUrl(bucket, objectKey);
 
