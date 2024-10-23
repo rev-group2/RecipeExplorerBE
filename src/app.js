@@ -4,6 +4,7 @@ const cors = require("cors");
 const recipeRouter = require("./controllers/recipe-routes.js");
 const userRouter = require("./controllers/user-routes.js");
 const commentRouter = require("./controllers/comment-routes.js");
+const imageRouter = require("./controllers/image-routes.js");
 const { getDatabaseItem } = require("./service/general-service.js");
 const { logger } = require("./util/logger.js");
 
@@ -20,6 +21,7 @@ app.use((req, res, next) => {
 app.use("/recipes", recipeRouter);
 app.use("/users", userRouter);
 app.use("/comments", commentRouter);
+app.use("/images", imageRouter);
 app.get("/:uuid", async (req, res) => {
   try {
     const uuid = req.params.uuid;
