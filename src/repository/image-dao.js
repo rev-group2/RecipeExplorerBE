@@ -22,7 +22,7 @@ async function uploadImageToBucket(Bucket, Key, mime, image) {
     return response;
   } catch (err) {
     logger.error(err);
-    throw new Error(err);
+    throw new Error(err.message);
   }
 }
 
@@ -34,7 +34,7 @@ async function getPreSignedUrl(Bucket, Key) {
     return response;
   } catch (err) {
     logger.error(err);
-    throw new Error(err);
+    throw new Error(err.message);
   }
 }
 

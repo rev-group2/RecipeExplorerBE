@@ -4,15 +4,23 @@ const {
 } = require("../repository/image-dao");
 
 async function imageUpload(imageFile) {
-  const bucket = "recipes-explorer";
-  const objectKey = `images/${Date.now()}_${imageFile.originalname}`;
-  const contentType = imageFile.mimetype;
+  try {
+    if (!imageFile) {
+      throw new Error("Missing image file");
+    }
 
-  await uploadImageToBucket(bucket, objectKey, contentType, imageFile.buffer);
+    const bucket = "recipes-explorer";
+    const objectKey = `images/${Date.now()}_${imageFile.originalname}`;
+    const contentType = imageFile.mimetype;
 
-  const presignedUrl = await getPreSignedUrl(bucket, objectKey);
+    await uploadImageToBucket(bucket, objectKey, contentType, imageFile.buffer);
 
-  return presignedUrl;
+    const presignedUrl = await getPreSignedUrl(bucket, objectKey);
+
+    return presignedUrl;
+  } catch (err) {
+    throw new Error(err.message);
+  }
 }
 
 module.exports = { imageUpload };
