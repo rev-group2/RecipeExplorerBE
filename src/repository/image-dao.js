@@ -13,8 +13,7 @@ async function uploadImageToBucket(Bucket, Key, mime, image) {
     Bucket,
     Key,
     Body: image,
-    ContentType: mime,
-    ContentEncoding: "base64"
+    ContentType: mime
   });
 
   try {
