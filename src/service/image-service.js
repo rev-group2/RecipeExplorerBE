@@ -9,7 +9,7 @@ async function imageUpload(imageFile) {
       throw new Error("Missing image file");
     }
 
-    const bucket = "recipes-explorer";
+    const bucket = "recipe-explorer";
     const objectKey = `images/${Date.now()}_${imageFile.originalname}`;
     const contentType = imageFile.mimetype;
 
