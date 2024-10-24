@@ -1,7 +1,4 @@
-const {
-  uploadImageToBucket,
-  getPreSignedUrl
-} = require("../repository/image-dao");
+const { uploadImageToBucket } = require("../repository/image-dao");
 
 async function imageUpload(imageFile) {
   try {
@@ -13,11 +10,14 @@ async function imageUpload(imageFile) {
     const objectKey = `images/${Date.now()}_${imageFile.originalname}`;
     const contentType = imageFile.mimetype;
 
-    await uploadImageToBucket(bucket, objectKey, contentType, imageFile.buffer);
+    const imageUrl = await uploadImageToBucket(
+      bucket,
+      objectKey,
+      contentType,
+      imageFile.buffer
+    );
 
-    const presignedUrl = await getPreSignedUrl(bucket, objectKey);
-
-    return presignedUrl;
+    return imageUrl;
   } catch (err) {
     throw new Error(err.message);
   }
