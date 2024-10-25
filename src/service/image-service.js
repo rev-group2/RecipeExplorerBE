@@ -7,7 +7,7 @@ async function imageUpload(imageFile) {
     }
 
     const bucket = "recipe-explorer";
-    const objectKey = `images/${Date.now()}_${imageFile.originalname}`;
+    const objectKey = `images/${Date.now()}`;
     const contentType = imageFile.mimetype;
 
     const imageUrl = await uploadImageToBucket(
