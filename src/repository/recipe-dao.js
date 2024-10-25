@@ -11,7 +11,7 @@ const {
 } = require("@aws-sdk/lib-dynamodb");
 // require("dotenv").config();
 // const AWS_REGION = process.env.AWS_REGION;
-const AWS_REGION = 'us-west-1';
+const AWS_REGION = "us-west-1";
 const { logger } = require("../util/logger");
 
 const client = new DynamoDBClient({ region: AWS_REGION });
@@ -62,7 +62,7 @@ async function insertRecipe(Recipe) {
   try {
     const response = await docClient.send(command);
     logger.info(`Created recipe: ${JSON.stringify(response)}`);
-    return response;
+    return { ...response, uuid: Recipe.uuid };
   } catch (err) {
     logger.error(err);
     throw new Error(err);
