@@ -28,10 +28,10 @@ async function postComment(authorUuid, reqBody) {
         throw new Error("rating is not of type number");
     }
     
-    const recipe = await getItemByUuid(recipeUuid);
-    if (recipe.type !== "recipe") {
-        throw new Error("comment being attached to non-recipe entity");
-    } else {
+    // const recipe = await getItemByUuid(recipeUuid);
+    // if (recipe.type !== "recipe") {
+    //     throw new Error("comment being attached to non-recipe entity");
+    // } else {
         const commentList = await queryCommentsByAuthorUuidRecipeUuid(authorUuid, recipeUuid);
         if(commentList.length > 0){
             throw new Error(`user has already reviewed recipe ${recipeUuid}`);
@@ -48,7 +48,7 @@ async function postComment(authorUuid, reqBody) {
             logger.error(err);
             throw new Error(err);
         }
-    }
+    // }
 }
 
 async function getRecipeComments(recipeUuid) {
