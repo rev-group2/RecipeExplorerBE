@@ -29,21 +29,22 @@ Clone the repo and use `npm install` to download the dependencies
 All of the API's routes are described below
 
 ### User Routes
-| Method      | Url                             | Description                                    | Authentication           |
-| ----------- | ------------------------------- | ---------------------------------------------- | ------------------------ |
-| `POST`      | `/api/users/login`              | Gets a JWT by username and password            |                          |
-| `GET`       | `/api/users/register`           | Creates a user in the database                 |
-| `GET`       | `/api/users/profile/:uuid`      | Gets all details about a user                  |
-| `POST`      | `/api/users/profile`            | Updates a profile                              | JWT Bearer Token         |
-| `PATCH`     | `/api/users/password`           | Updates a user's password                      | JWT Bearer Token         |
-| `DELETE`    | `/api/users/:uuid`              | Deletes a user in the database                 | JWT Bearer Token
-| `GET`       | `/api/users/recipes/:uuid`      | Gets a list of recipes by a user               |
-| `GET`       | `/api/users/activity:uuid`      | Gets a list of comments and recipes by a user  |
-| `GET`       | `/api/users/user-by-token`      | Gets a user's data by their token              | JWT Bearer Token |
+| Method      | Url                             | Description                                                               | Authentication           |
+| ----------- | ------------------------------- | ------------------------------------------------------------------------- | ------------------------ |
+| `POST`      | `/api/users/login`              | Gets a JWT by username and password                                       |                          |
+| `GET`       | `/api/users/register`           | Creates a user in the database                                            |                          |
+| `GET`       | `/api/users/profile/:uuid`      | Gets all details about a user                                             |                          |
+| `POST`      | `/api/users/profile`            | Updates a profile                                                         | JWT Bearer Token         |
+| `PATCH`     | `/api/users/password`           | Updates a user's password                                                 | JWT Bearer Token         |
+| `DELETE`    | `/api/users/:uuid`              | Deletes a user in the database                                            | JWT Bearer Token
+| `GET`       | `/api/users/recipes/:uuid`      | Gets a list of recipes by a user                                          |                          |
+| `GET`       | `/api/users/activity:uuid`      | Gets a list of comments and recipes by a user                             |                          |
+| `GET`       | `/api/users/user-by-token`      | Gets a user's data by their token                                         | JWT Bearer Token         |
+
 
 ### Recipe Routes
-| Method      | Url                             | Description                                    | Authentication           |
-| ----------- | ------------------------------- | ---------------------------------------------- | ------------------------ |
+| Method      | Url                             | Description                                                               | Authentication           |
+| ----------- | ------------------------------- | ------------------------------------------------------------------------- | ------------------------ |
 | `GET`      | `/api/recipes`               | Queries recipes based on query parameter of: cuisine, category, ingredient            |                          |
 | `GET`      | `/api/recipes/:uuid`              | Gets a recipe by uuid            |                          |
 | `POST`      | `/api/recipes`              | Creates a recipe in the database             | JWT Bearer Token                          |
@@ -52,10 +53,15 @@ All of the API's routes are described below
 
 
 ### Comment Routes 
-| Method      | Url                             | Description                                    | Authentication           |
-| ----------- | ------------------------------- | ---------------------------------------------- | ------------------------ |
+| Method      | Url                             | Description                                                               | Authentication           |
+| ----------- | ------------------------------- | ------------------------------------------------------------------------- | ------------------------ |
 |`POST`  | `/api/comments/`       | posts a comment                                     | JWT Bearer Token|
 |`GET`   | `/api/comments/recipe` | gets all comments for a specific recipe             |                 |
 |`PUT`   | `/api/comments/:uuid`  | updates the path specified comment with new values  | JWT Bearer Token| 
 |`DELETE`| `/api/comments/:uuid`  | deletes the path specified comment from the database| JWT Bearer Token|
  
+
+### Image Routes
+| Method      | Url                             | Description                                                               | Authentication           |
+| ----------- | ------------------------------- | ------------------------------------------------------------------------- | ------------------------ |
+| `POST`      | `/api/images`              | Posts an image to the database            |               JWT Bearer Token           |
